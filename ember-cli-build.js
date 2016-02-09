@@ -2,6 +2,12 @@
 /* global require, module */
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
+// var cytoscape = require('cytoscape');
+// var cycola = require('cytoscape-cola');
+// var cola = require('WebCola');
+//
+// cycola( cytoscape, cola ); // register extension
+
 module.exports = function(defaults) {
 	var app = new EmberApp(defaults, {
 		// Add options here

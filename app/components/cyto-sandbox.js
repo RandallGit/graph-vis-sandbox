@@ -24,7 +24,9 @@ export default Ember.Component.extend({
 					'text-background-color': 'white',
 					'text-background-shape': 'rectangle',
 					'text-background-opacity': '1',
-					'font-size': '8px',
+					'font-size': '36px',
+					'width': '100px',
+					'height': '100px'
 				}
 			}, {
 				selector: '$node > node',
@@ -35,7 +37,7 @@ export default Ember.Component.extend({
 					'padding-right': '10px',
 					'text-valign': 'top',
 					'text-halign': 'center',
-					'background-color': '#bbb'
+					'background-color': '#838787'
 				}
 			}, {
 				selector: 'edge',
@@ -51,7 +53,14 @@ export default Ember.Component.extend({
 					'target-arrow-color': 'black',
 					'source-arrow-color': 'black'
 				}
-			}],
+			}, {
+				selector: '.connectednodes',
+					css: {
+						'background-color': 'pink',
+					}
+			}
+
+		],
 
 			layout: {
 				// name: 'grid',
@@ -121,7 +130,7 @@ export default Ember.Component.extend({
 				directed: false, // whether the tree is directed downwards (or edges can point in any direction if false)
 				padding: 30, // padding on fit
 				circle: false, // put depths in concentric circles if true, put depths top down if false
-				spacingFactor: 1.75, // positive spacing factor, larger => more space between nodes (N.B. n/a if causes overlap)
+				spacingFactor: 1, // positive spacing factor, larger => more space between nodes (N.B. n/a if causes overlap)
 				boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
 				avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
 				roots: undefined, // the roots of the trees
@@ -1322,5 +1331,10 @@ export default Ember.Component.extend({
 				}, ]
 			},
 		});
-	}
+		cy.on('tap', 'node', function(e) {
+			var node = e.cyTarget;
+			var directlyConnected = node.neighborhood();
+			directlyConnected.nodes().addClass('connectednodes');
+		});
+	},
 });

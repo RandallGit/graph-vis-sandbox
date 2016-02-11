@@ -6,46 +6,22 @@ export default Ember.Component.extend({
 
 	didInsertElement: function() {
 		this._super();
-		// Ember.run.scheduleOnce('afterRender', this, function(){
-		// 	var self = this;
-		// 	// this.reset_graph_panel();
-		// 	this.set("cy", cytoscape({
-		// 				container: Ember.$('#cy')[0],
-		// 				// elements: this.get("cytoscape_data"),
-		// 				// zoom: 1,
-		// 				// pan: { x: 0, y: 0 },
-		// 				// zoomingEnabled: false,
-		// 				// userZoomingEnabled: false,
-		// 				// panningEnabled: true,
-		// 				// userPanningEnabled: false,
-		// 				// autoungrabify: false,
-		// 				ready: function() {
-		// 					console.log("Graph is ready!");
-		// 					// self.reset_graph_panel();
-		// 					// self.style_graph();
-		// 					// self.reposition_graph();
-		// 					// self.setup_graph_actions();
-		// 					// self.get("cy").forceRender();
-		// 				}
-		// 		}));
-		// });
+
 		var cy = cytoscape({
+			container: document.getElementById('cy'),
 
-		container: document.getElementById('cy'),
+			boxSelectionEnabled: false,
+			autounselectify: true,
+			hideLabelsOnViewport: true,
 
-		boxSelectionEnabled: false,
-		autounselectify: true,
-
-		style: [
-			{
+			style: [{
 				selector: 'node',
 				css: {
-					'content': 'data(id)',
+					'content': 'data(label)',
 					'text-valign': 'center',
 					'text-halign': 'center'
 				}
-			},
-			{
+			}, {
 				selector: '$node > node',
 				css: {
 					'padding-top': '10px',
@@ -56,14 +32,12 @@ export default Ember.Component.extend({
 					'text-halign': 'center',
 					'background-color': '#bbb'
 				}
-			},
-			{
+			}, {
 				selector: 'edge',
 				css: {
 					'target-arrow-shape': 'triangle'
 				}
-			},
-			{
+			}, {
 				selector: ':selected',
 				css: {
 					'background-color': 'black',
@@ -71,325 +45,1188 @@ export default Ember.Component.extend({
 					'target-arrow-color': 'black',
 					'source-arrow-color': 'black'
 				}
+			}],
+
+			elements: {
+				nodes: [
+					{
+					data: {
+						id: "0",
+						label: "Beak"
+					}
+				}, {
+					data: {
+						id: "1",
+						label: "Beescratch"
+					}
+				}, {
+					data: {
+						id: "2",
+						label: "Bumper"
+					}
+				}, {
+					data: {
+						id: "3",
+						label: "CCL"
+					}
+				}, {
+					data: {
+						id: "4",
+						label: "Cross"
+					}
+				}, {
+					data: {
+						id: "5",
+						label: "DN16"
+					}
+				}, {
+					data: {
+						id: "6",
+						label: "DN21"
+					}
+				}, {
+					data: {
+						id: "7",
+						label: "DN63"
+					}
+				}, {
+					data: {
+						id: "8",
+						label: "Double"
+					}
+				}, {
+					datta: {
+						id: "9",
+						label: "Feather"
+					}
+				}, {
+					datta: {
+						id: "10",
+						label: "Fish"
+					}
+				}, {
+					data: {
+						id: "11",
+						label: "Five"
+					}
+				}, {
+					data: {
+						id: "12",
+						label: "Fork"
+					}
+				}, {
+					data: {
+						id: "13",
+						label: "Gallatin"
+					}
+				}, {
+					data: {
+						id: "14",
+						label: "Grin"
+					}
+				}, {
+					data: {
+						id: "15",
+						label: "Haecksel"
+					}
+				}, {
+					data: {
+						id: "16",
+						label: "Hook"
+					}
+				}, {
+					data: {
+						id: "17",
+						label: "Jet"
+					}
+				}, {
+					data: {
+						id: "18",
+						label: "Jonah"
+					}
+				}, {
+					data: {
+						id: "19",
+						label: "Knit"
+					}
+				}, {
+					data: {
+						id: "20",
+						label: "Kringel"
+					}
+				}, {
+					data: {
+						id: "21",
+						label: "MN105"
+					}
+				}, {
+					data: {
+						id: "22",
+						label: "MN23"
+					}
+				}, {
+					data: {
+						id: "23",
+						label: "MN60"
+					}
+				}, {
+					data: {
+						id: "24",
+						label: "MN83"
+					}
+				}, {
+					data: {
+						id: "25",
+						label: "Mus"
+					}
+				}, {
+					data: {
+						id: "26",
+						label: "Notch"
+					}
+				}, {
+					data: {
+						id: "27",
+						label: "Number1"
+					}
+				}, {
+					data: {
+						id: "28",
+						label: "Oscar"
+					}
+				}, {
+					data: {
+						id: "29",
+						label: "Patchback"
+					}
+				}, {
+					data: {
+						id: "30",
+						label: "PL"
+					}
+				}, {
+					data: {
+						id: "31",
+						label: "Quasi"
+					}
+				}, {
+					data: {
+						id: "32",
+						label: "Ripplefluke"
+					}
+				}, {
+					data: {
+						id: "33",
+						label: "Scabs"
+					}
+				}, {
+					data: {
+						id: "34",
+						label: "Shmuddel"
+					}
+				}, {
+					data: {
+						id: "35",
+						label: "SMN5"
+					}
+				}, {
+					data: {
+						id: "36",
+						label: "SN100"
+					}
+				}, {
+					data: {
+						id: "37",
+						label: "SN4"
+					}
+				}, {
+					data: {
+						id: "38",
+						label: "SN63"
+					}
+				}, {
+					data: {
+						id: "39",
+						label: "SN89"
+					}
+				}, {
+					data: {
+						id: "40",
+						label: "SN9"
+					}
+				}, {
+					data: {
+						id: "41",
+						label: "SN90"
+					}
+				}, {
+					data: {
+						id: "42",
+						label: "SN96"
+					}
+				}, {
+					data: {
+						id: "43",
+						label: "Stripes"
+					}
+				}, {
+					data: {
+						id: "44",
+						label: "Thumper"
+					}
+				}, {
+					data: {
+						id: "45",
+						label: "Topless"
+					}
+				}, {
+					data: {
+						id: "46",
+						label: "TR120"
+					}
+				}, {
+					data: {
+						id: "47",
+						label: "TR77"
+					}
+				}, {
+					data: {
+						id: "48",
+						label: "TR82"
+					}
+				}, {
+					data: {
+						id: "49",
+						label: "TR88"
+					}
+				}, {
+					data: {
+						id: "50",
+						label: "TR99"
+					}
+				}, {
+					data: {
+						id: "51",
+						label: "Trigger"
+					}
+				}, {
+					data: {
+						id: "52",
+						label: "TSN103"
+					}
+				}, {
+					data: {
+						id: "53",
+						label: "TSN83"
+					}
+				}, {
+					data: {
+						id: "54",
+						label: "Upbang"
+					}
+				}, {
+					data: {
+						id: "55",
+						label: "Vau"
+					}
+				}, {
+					data: {
+						id: "56",
+						label: "Wave"
+					}
+				}, {
+					data: {
+						id: "57",
+						label: "Web"
+					}
+				}, {
+					data: {
+						id: "58",
+						label: "Whitetip"
+					}
+				}, {
+					data: {
+						id: "59",
+						label: "Zap"
+					}
+				}, {
+					data: {
+						id: "60",
+						label: "Zig"
+					}
+				}, {
+					data: {
+						id: "61",
+						label: "Zipfel"
+					}
+				}, ],
+				edges: [
+					{
+					data: {
+						source: '8',
+						target: '3'
+					}
+				}, {
+					data: {
+						source: '9',
+						target: '5'
+					}
+				}, {
+					data: {
+						source: '9',
+						target: '6'
+					}
+				}, {
+					data: {
+						source: '10',
+						target: '0'
+					}
+				}, {
+					data: {
+						source: '10',
+						target: '2'
+					}
+				}, {
+					data: {
+						source: '13',
+						target: '5'
+					}
+				}, {
+					data: {
+						source: '13',
+						target: '6'
+					}
+				}, {
+					data: {
+						source: '13',
+						target: '9'
+					}
+				}, {
+					data: {
+						source: '14',
+						target: '0'
+					}
+				}, {
+					data: {
+						source: '14',
+						target: '3'
+					}
+				}, {
+					data: {
+						source: '15',
+						target: '0'
+					}
+				}, {
+					data: {
+						source: '16',
+						target: '14'
+					}
+				}, {
+					data: {
+						source: '17',
+						target: '1'
+					}
+				}, {
+					data: {
+						source: '17',
+						target: '6'
+					}
+				}, {
+					data: {
+						source: '17',
+						target: '9'
+					}
+				}, {
+					data: {
+						source: '17',
+						target: '13'
+					}
+				}, {
+					data: {
+						source: '18',
+						target: '15'
+					}
+				}, {
+					data: {
+						source: '19',
+						target: '1'
+					}
+				}, {
+					data: {
+						source: '19',
+						target: '7'
+					}
+				}, {
+					data: {
+						source: '20',
+						target: '8'
+					}
+				}, {
+					data: {
+						source: '20',
+						target: '16'
+					}
+				}, {
+					data: {
+						source: '20',
+						target: '18'
+					}
+				}, {
+					data: {
+						source: '21',
+						target: '18'
+					}
+				}, {
+					data: {
+						source: '22',
+						target: '17'
+					}
+				}, {
+					data: {
+						source: '24',
+						target: '14'
+					}
+				}, {
+					data: {
+						source: '24',
+						target: '15'
+					}
+				}, {
+					data: {
+						source: '24',
+						target: '18'
+					}
+				}, {
+					data: {
+						source: '25',
+						target: '17'
+					}
+				}, {
+					data: {
+						source: '26',
+						target: '1'
+					}
+				}, {
+					data: {
+						source: '26',
+						target: '25'
+					}
+				}, {
+					data: {
+						source: '27',
+						target: '1'
+					}
+				}, {
+					data: {
+						source: '27',
+						target: '7'
+					}
+				}, {
+					data: {
+						source: '27',
+						target: '17'
+					}
+				}, {
+					data: {
+						source: '27',
+						target: '25'
+					}
+				}, {
+					data: {
+						source: '27',
+						target: '26'
+					}
+				}, {
+					data: {
+						source: '28',
+						target: '1'
+					}
+				}, {
+					data: {
+						source: '28',
+						target: '8'
+					}
+				}, {
+					data: {
+						source: '28',
+						target: '20'
+					}
+				}, {
+					data: {
+						source: '29',
+						target: '10'
+					}
+				}, {
+					data: {
+						source: '29',
+						target: '18'
+					}
+				}, {
+					data: {
+						source: '29',
+						target: '21'
+					}
+				}, {
+					data: {
+						source: '29',
+						target: '24'
+					}
+				}, {
+					data: {
+						source: '30',
+						target: '7'
+					}
+				}, {
+					data: {
+						source: '30',
+						target: '19'
+					}
+				}, {
+					data: {
+						source: '30',
+						target: '28'
+					}
+				}, {
+					data: {
+						source: '31',
+						target: '17'
+					}
+				}, {
+					data: {
+						source: '32',
+						target: '9'
+					}
+				}, {
+					data: {
+						source: '32',
+						target: '13'
+					}
+				}, {
+					data: {
+						source: '33',
+						target: '12'
+					}
+				}, {
+					data: {
+						source: '33',
+						target: '14'
+					}
+				}, {
+					data: {
+						source: '33',
+						target: '16'
+					}
+				}, {
+					data: {
+						source: '33',
+						target: '21'
+					}
+				}, {
+					data: {
+						source: '34',
+						target: '14'
+					}
+				}, {
+					data: {
+						source: '34',
+						target: '33'
+					}
+				}, {
+					data: {
+						source: '35',
+						target: '29'
+					}
+				}, {
+					data: {
+						source: '36',
+						target: '1'
+					}
+				}, {
+					data: {
+						source: '36',
+						target: '20'
+					}
+				}, {
+					data: {
+						source: '36',
+						target: '23'
+					}
+				}, {
+					data: {
+						source: '37',
+						target: '8'
+					}
+				}, {
+					data: {
+						source: '37',
+						target: '14'
+					}
+				}, {
+					data: {
+						source: '37',
+						target: '16'
+					}
+				}, {
+					data: {
+						source: '37',
+						target: '21'
+					}
+				}, {
+					data: {
+						source: '37',
+						target: '33'
+					}
+				}, {
+					data: {
+						source: '37',
+						target: '34'
+					}
+				}, {
+					data: {
+						source: '37',
+						target: '36'
+					}
+				}, {
+					data: {
+						source: '38',
+						target: '14'
+					}
+				}, {
+					data: {
+						source: '38',
+						target: '16'
+					}
+				}, {
+					data: {
+						source: '38',
+						target: '20'
+					}
+				}, {
+					data: {
+						source: '38',
+						target: '33'
+					}
+				}, {
+					data: {
+						source: '39',
+						target: '36'
+					}
+				}, {
+					data: {
+						source: '40',
+						target: '0'
+					}
+				}, {
+					data: {
+						source: '40',
+						target: '7'
+					}
+				}, {
+					data: {
+						source: '40',
+						target: '14'
+					}
+				}, {
+					data: {
+						source: '40',
+						target: '15'
+					}
+				}, {
+					data: {
+						source: '40',
+						target: '33'
+					}
+				}, {
+					data: {
+						source: '40',
+						target: '36'
+					}
+				}, {
+					data: {
+						source: '40',
+						target: '37'
+					}
+				}, {
+					data: {
+						source: '41',
+						target: '1'
+					}
+				}, {
+					data: {
+						source: '41',
+						target: '9'
+					}
+				}, {
+					data: {
+						source: '41',
+						target: '13'
+					}
+				}, {
+					data: {
+						source: '42',
+						target: '0'
+					}
+				}, {
+					data: {
+						source: '42',
+						target: '2'
+					}
+				}, {
+					data: {
+						source: '42',
+						target: '10'
+					}
+				}, {
+					data: {
+						source: '42',
+						target: '30'
+					}
+				}, {
+					data: {
+						source: '43',
+						target: '14'
+					}
+				}, {
+					data: {
+						source: '43',
+						target: '29'
+					}
+				}, {
+					data: {
+						source: '43',
+						target: '33'
+					}
+				}, {
+					data: {
+						source: '43',
+						target: '37'
+					}
+				}, {
+					data: {
+						source: '43',
+						target: '38'
+					}
+				}, {
+					data: {
+						source: '44',
+						target: '2'
+					}
+				}, {
+					data: {
+						source: '44',
+						target: '20'
+					}
+				}, {
+					data: {
+						source: '44',
+						target: '34'
+					}
+				}, {
+					data: {
+						source: '44',
+						target: '38'
+					}
+				}, {
+					data: {
+						source: '45',
+						target: '8'
+					}
+				}, {
+					data: {
+						source: '45',
+						target: '15'
+					}
+				}, {
+					data: {
+						source: '45',
+						target: '18'
+					}
+				}, {
+					data: {
+						source: '45',
+						target: '21'
+					}
+				}, {
+					data: {
+						source: '45',
+						target: '23'
+					}
+				}, {
+					data: {
+						source: '45',
+						target: '24'
+					}
+				}, {
+					data: {
+						source: '45',
+						target: '29'
+					}
+				}, {
+					data: {
+						source: '45',
+						target: '37'
+					}
+				}, {
+					data: {
+						source: '46',
+						target: '43'
+					}
+				}, {
+					data: {
+						source: '47',
+						target: '0'
+					}
+				}, {
+					data: {
+						source: '47',
+						target: '10'
+					}
+				}, {
+					data: {
+						source: '47',
+						target: '20'
+					}
+				}, {
+					data: {
+						source: '47',
+						target: '28'
+					}
+				}, {
+					data: {
+						source: '47',
+						target: '30'
+					}
+				}, {
+					data: {
+						source: '47',
+						target: '42'
+					}
+				}, {
+					data: {
+						source: '49',
+						target: '34'
+					}
+				}, {
+					data: {
+						source: '49',
+						target: '46'
+					}
+				}, {
+					data: {
+						source: '50',
+						target: '14'
+					}
+				}, {
+					data: {
+						source: '50',
+						target: '16'
+					}
+				}, {
+					data: {
+						source: '50',
+						target: '20'
+					}
+				}, {
+					data: {
+						source: '50',
+						target: '33'
+					}
+				}, {
+					data: {
+						source: '50',
+						target: '42'
+					}
+				}, {
+					data: {
+						source: '50',
+						target: '45'
+					}
+				}, {
+					data: {
+						source: '51',
+						target: '4'
+					}
+				}, {
+					data: {
+						source: '51',
+						target: '11'
+					}
+				}, {
+					data: {
+						source: '51',
+						target: '18'
+					}
+				}, {
+					data: {
+						source: '51',
+						target: '21'
+					}
+				}, {
+					data: {
+						source: '51',
+						target: '23'
+					}
+				}, {
+					data: {
+						source: '51',
+						target: '24'
+					}
+				}, {
+					data: {
+						source: '51',
+						target: '29'
+					}
+				}, {
+					data: {
+						source: '51',
+						target: '45'
+					}
+				}, {
+					data: {
+						source: '51',
+						target: '50'
+					}
+				}, {
+					data: {
+						source: '52',
+						target: '14'
+					}
+				}, {
+					data: {
+						source: '52',
+						target: '29'
+					}
+				}, {
+					data: {
+						source: '52',
+						target: '38'
+					}
+				}, {
+					data: {
+						source: '52',
+						target: '40'
+					}
+				}, {
+					data: {
+						source: '53',
+						target: '43'
+					}
+				}, {
+					data: {
+						source: '54',
+						target: '1'
+					}
+				}, {
+					data: {
+						source: '54',
+						target: '6'
+					}
+				}, {
+					data: {
+						source: '54',
+						target: '7'
+					}
+				}, {
+					data: {
+						source: '54',
+						target: '13'
+					}
+				}, {
+					data: {
+						source: '54',
+						target: '19'
+					}
+				}, {
+					data: {
+						source: '54',
+						target: '41'
+					}
+				}, {
+					data: {
+						source: '55',
+						target: '15'
+					}
+				}, {
+					data: {
+						source: '55',
+						target: '51'
+					}
+				}, {
+					data: {
+						source: '56',
+						target: '5'
+					}
+				}, {
+					data: {
+						source: '56',
+						target: '6'
+					}
+				}, {
+					data: {
+						source: '57',
+						target: '5'
+					}
+				}, {
+					data: {
+						source: '57',
+						target: '6'
+					}
+				}, {
+					data: {
+						source: '57',
+						target: '9'
+					}
+				}, {
+					data: {
+						source: '57',
+						target: '13'
+					}
+				}, {
+					data: {
+						source: '57',
+						target: '17'
+					}
+				}, {
+					data: {
+						source: '57',
+						target: '39'
+					}
+				}, {
+					data: {
+						source: '57',
+						target: '41'
+					}
+				}, {
+					data: {
+						source: '57',
+						target: '48'
+					}
+				}, {
+					data: {
+						source: '57',
+						target: '54'
+					}
+				}, {
+					data: {
+						source: '58',
+						target: '38'
+					}
+				}, {
+					data: {
+						source: '59',
+						target: '3'
+					}
+				}, {
+					data: {
+						source: '59',
+						target: '8'
+					}
+				}, {
+					data: {
+						source: '59',
+						target: '15'
+					}
+				}, {
+					data: {
+						source: '59',
+						target: '36'
+					}
+				}, {
+					data: {
+						source: '59',
+						target: '45'
+					}
+				}, {
+					data: {
+						source: '60',
+						target: '32'
+					}
+				}, {
+					data: {
+						source: '61',
+						target: '2'
+					}
+				}, {
+					data: {
+						source: '61',
+						target: '37'
+					}
+				}, {
+					data: {
+						source: '61',
+						target: '53'
+					}
+				}, ]
+			},
+
+			layout: {
+					name: 'cose',
+					ready               : function() {},
+					// Called on `layoutstop`
+					stop                : function() {},
+					// Whether to animate while running the layout
+					animate             : true,
+					// The layout animates only after this many milliseconds
+					// (prevents flashing on fast runs)
+					animationThreshold  : 250,
+					// Number of iterations between consecutive screen positions update
+					// (0 -> only updated on the end)
+					refresh             : 20,
+					// Whether to fit the network view after when done
+					fit                 : true,
+					// Padding on fit
+					padding             : 30,
+					// Constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
+					boundingBox         : undefined,
+					// Extra spacing between components in non-compound graphs
+					componentSpacing    : 100,
+					// Node repulsion (non overlapping) multiplier
+					nodeRepulsion       : function( node ){ return 400000; },
+					// Node repulsion (overlapping) multiplier
+					nodeOverlap         : 10,
+					// Ideal edge (non nested) length
+					idealEdgeLength     : function( edge ){ return 10; },
+					// Divisor to compute edge forces
+					edgeElasticity      : function( edge ){ return 100; },
+					// Nesting factor (multiplier) to compute ideal edge length for nested edges
+					nestingFactor       : 5,
+					// Gravity force (constant)
+					gravity             : 80,
+					// Maximum number of iterations to perform
+					numIter             : 1000,
+					// Initial temperature (maximum node displacement)
+					initialTemp         : 200,
+					// Cooling factor (how the temperature is reduced between consecutive iterations
+					coolingFactor       : 0.95,
+					// Lower temperature threshold (below this point the layout will end)
+					minTemp             : 1.0,
+					// Whether to use threading to speed up the layout
+					useMultitasking     : true
+				// name: 'concentric',
+				//
+				// fit: true, // whether to fit the viewport to the graph
+				// padding: 30, // the padding on fit
+				// startAngle: 3 / 2 * Math.PI, // where nodes start in radians
+				// sweep: undefined, // how many radians should be between the first and last node (defaults to full circle)
+				// clockwise: true, // whether the layout should go clockwise (true) or counterclockwise/anticlockwise (false)
+				// equidistant: false, // whether levels have an equal radial distance betwen them, may cause bounding box overflow
+				// minNodeSpacing: 10, // min spacing between outside of nodes (used for radius adjustment)
+				// boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
+				// avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
+				// height: undefined, // height of layout area (overrides container height)
+				// width: undefined, // width of layout area (overrides container width)
+				// concentric: function(node) { // returns numeric value for each node, placing higher nodes in levels towards the centre
+				// 	return node.degree();
+				// },
+				// levelWidth: function(nodes) { // the variation of concentric values in each level
+				// 	return nodes.maxDegree() / 4;
+				// },
+				// animate: false, // whether to transition the node positions
+				// animationDuration: 500, // duration of animation in ms if enabled
+				// animationEasing: undefined, // easing of animation if enabled
+				// ready: undefined, // callback on layoutready
+				// stop: undefined // callback on layoutstop
 			}
-		],
-
-		elements: {
-			nodes: [
-				{ data: { id: 'a', parent: 'b' } },
-				{ data: { id: 'b' } },
-				{ data: { id: 'c', parent: 'b' } },
-				{ data: { id: 'd' } },
-				{ data: { id: 'e' } },
-				{ data: { id: 'f', parent: 'e' } }
-			],
-			edges: [
-				{ data: { id: 'ad', source: 'a', target: 'd' } },
-				{ data: { id: 'eb', source: 'e', target: 'b' } }
-
-			]
-		},
-
-		layout: {
-			name: 'breadthfirst',
-			padding: 30, // the padding on fit
-			// startAngle: 3/2 * Math.PI, // where nodes start in radians
-			// sweep: undefined, // how many radians should be between the first and last node (defaults to full circle)
-			// clockwise: true, // whether the layout should go clockwise (true) or counterclockwise/anticlockwise (false)
-			// equidistant: false, // whether levels have an equal radial distance betwen them, may cause bounding box overflow
-			// minNodeSpacing: 10, // min spacing between outside of nodes (used for radius adjustment)
-			// boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
-			// avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
-			// height: undefined, // height of layout area (overrides container height)
-			// width: undefined, // width of layout area (overrides container width)
-			// concentric: function(node){ // returns numeric value for each node, placing higher nodes in levels towards the centre
-			// 	return node.degree();
-			// },
-			// levelWidth: function(nodes){ // the variation of concentric values in each level
-			// 	return nodes.maxDegree() / 4;
-			// },
-			// animate: false, // whether to transition the node positions
-			// animationDuration: 500, // duration of animation in ms if enabled
-			// animationEasing: undefined, // easing of animation if enabled
-			// ready: undefined, // callback on layoutready
-			// stop: undefined // callback on layoutstop
-		}
-	});
-}
-
-		// Ember.run.scheduleOnce('afterRender', this, function(){
-		// 	var self = this;
-		// 	Ember.$(window).on("window:resize", function() {
-		// 			self.reposition_graph();
-		// 		});
-		// 	this.reset_graph_panel();
-		// 	this.set("cy", cytoscape({
-		// 				container: Ember.$('#cy')[0],
-		// 				elements: this.get("cytoscape_data"),
-		// 				zoom: 1,
-		// 				pan: { x: 0, y: 0 },
-		// 				zoomingEnabled: false,
-		// 				userZoomingEnabled: false,
-		// 				panningEnabled: true,
-		// 				userPanningEnabled: false,
-		// 				autoungrabify: false,
-		// 				ready: function() {
-		// 					console.log("Graph is ready!");
-		// 					self.reset_graph_panel();
-		// 					self.style_graph();
-		// 					self.reposition_graph();
-		// 					self.setup_graph_actions();
-		// 					self.get("cy").forceRender();
-		// 				}
-		// 		}));
-		// });
-	// var cy = cytoscape({
-	//
-	// container: document.getElementById('cy'), // container to render in
-
-// 	elements: [ // list of graph elements to start with
-// 		{ // node a
-// 			data: { id: 'a' }
-// 		},
-// 		{ // node b
-// 			data: { id: 'b' }
-// 		},
-// 		{ // edge ab
-// 			data: { id: 'ab', source: 'a', target: 'b' }
-// 		}
-// 	],
-//
-// 	style: [ // the stylesheet for the graph
-// 		{
-// 			selector: 'node',
-// 			style: {
-// 				'background-color': '#666',
-// 				'label': 'data(id)'
-// 			}
-// 		},
-//
-// 		{
-// 			selector: 'edge',
-// 			style: {
-// 				'width': 3,
-// 				'line-color': '#ccc',
-// 				'target-arrow-color': '#ccc',
-// 				'target-arrow-shape': 'triangle'
-// 			}
-// 		}
-// 	],
-//
-// 	layout: {
-// 		name: 'grid',
-// 		rows: 1
-// 	}
-//
-// });
-	// },
-	// reset_graph_panel: function() {
-	// 	var graphPanel = document.getElementById("cy");
-	//
-	// 	graphPanel.style.width = "100%";
-	// 	graphPanel.style.height = 800 + "px";
-	// },
-	// loadGraph: function(file) {
-	// 			var json = null;
-	// 			Ember.$.ajax({
-	// 					'async': false,
-	// 					'global': false,
-	// 					'url': file,
-	// 					'dataType': 'json',
-	// 					'success': function (data) {
-	// 							json = data;
-	// 					}
-	// 			});
-	// 			return json;
-	// 	},
-	// 	reposition_graph: function() {
-	// 		var self = this;
-	// 		this.get("cy").autolock(false);
-	// 		var width = Ember.$("#cy").width();
-	// 		var height = 800;
-	// 		var options = {
-	// 		name: 'breadthfirst',
-	// 		roots: [self.get("root_node")],
-	// 		boundingBox: {
-	// 			x1: 0,
-	// 			y1: 0,
-	// 			w: width,
-	// 			h: height
-	// 		},
-	// 		padding: 5,
-	// 		spacingFactor: 1
-	//
-	// 		/*fit: true, // whether to fit the viewport to the graph
-	// 		directed: false, // whether the tree is directed downwards (or edges can point in any direction if false)
-	// 		padding: 30, // padding on fit
-	// 		circle: false, // put depths in concentric circles if true, put depths top down if false
-	// 		spacingFactor: 1.75, // positive spacing factor, larger => more space between nodes (N.B. n/a if causes overlap)
-	// 		boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
-	// 		avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
-	// 		roots: undefined, // the roots of the trees
-	// 		maximalAdjustments: 0, // how many times to try to position the nodes in a maximal way (i.e. no backtracking)
-	// 		animate: false, // whether to transition the node positions
-	// 		animationDuration: 500, // duration of animation in ms if enabled
-	// 		ready: undefined, // callback on layoutready
-	// 		stop: undefined // callback on layoutstop*/
-	// 	};
-	// 	this.get("cy").layout(options);
-	// 	this.get("cy").center();
-	// 	options.boundingBox.height = this.get("cy").height();
-	// 	//this.get("cy").layout(options);
-	// 	this.get("cy").autolock(true);
-	// 	this.get("cy").forceRender();
-	// 	},
-	// 	style_graph: function()  {
-	// 		this.get("cy").style()
-	// 					.selector('node')
-	// 						.css({
-	// 							'width': '100px',
-	// 							'height': '100px',
-	// 							'border-color': 'gray',
-	// 							'border-width': 3,
-	// 							'border-opacity': 0.5
-	// 						})
-	// 					.selector('node[node_type = "uvod"]')
-	// 						.css({
-	// 			'background-image': 'img/nodes/node-start.svg',
-	// 			'background-width': '103px',
-	// 			'background-height': '103px'
-	// 						})
-	// 					.selector('node[node_type = "small_p"]')
-	// 						.css({
-	// 							'background-image': 'img/nodes/node-jelen.png',
-	// 							'background-width': '103px',
-	// 							'background-height': '103px'
-	// 							//'background-color': '#3885C6'
-	// 						})
-	// 					.selector('node[node_type = "small_t"]')
-	// 						.css({
-	// 							'background-image': 'img/nodes/node-kufor.png',
-	// 							'background-width': '103px',
-	// 							'background-height': '103px'
-	// 							//'background-color': '#81E877'
-	// 						})
-	// 					.selector('node[node_type = "big"]')
-	// 						.css({
-	// 							'background-image': 'img/nodes/node-sova.png',
-	// 							'background-width': '103px',
-	// 							'background-height': '103px'
-	// 							//'background-color': '#FFCC52'
-	// 						})
-	// 					.selector('node[node_type = "bonus"]')
-	// 						.css({
-	// 							'background-image': 'img/nodes/node-zem.png',
-	// 							'background-width': '103px',
-	// 							'background-height': '103px'
-	// 							//'background-color': '#7A80FF'
-	// 						})
-	// 					.selector('edge')
-	// 						.css({
-	// 							'width': 6,
-	// 							'border-color': '#39393a',
-	// 							'target-arrow-shape': 'triangle',
-	// 							'opacity': 1
-	// 						})
-	// 					.selector(':selected')
-	// 						.css({
-	// 							'background-color': 'orange',
-	// 							'opacity': 1
-	// 						})
-	// 					.selector('.faded')
-	// 						.css({
-	// 							'opacity': 0.0,
-	// 							'text-opacity': 0
-	// 				}).update();
-	// 			//this.get("cy").style(style);
-	// 	},
-	// 	setup_graph_actions: function() {
-	// 		var self = this;
-	// 		this.get("cy").cxtmenu({
-	// 				selector: 'node',
-	// 				commands: [
-	// 						{
-	// 								content: 'Odevzdání',
-	// 								select: function(){
-	// 										self.sendAction("sub", this.id());
-	// 								}
-	// 						},
-	//
-	// 						{
-	// 								content: 'Zadání',
-	// 								select: function(){
-	// 										self.sendAction('assign', this.id());
-	// 								}
-	// 						},
-	//
-	// 						{
-	// 								content: 'Statistika',
-	// 								select: function(){
-	// 										self.sendAction('stat', this.id());
-	// 								}
-	// 						},
-	//
-	// 						{
-	// 								content: 'Diskuze',
-	// 								select: function(){
-	// 										self.sendAction('discuss', this.id());
-	// 								}
-	// 						},
-	//
-	// 						{
-	// 								content: 'Řešení',
-	// 								select: function(){
-	// 										self.sendAction('solution', this.id());
-	// 								}
-	// 						}
-	// 				]
-	// 		});
-	// 		this.get("cy").on('mousedown','node', function(event){
-	// 		var target = event.cyTarget;
-	// 				var id = target.data("id");
-	// 				self.sendAction('assign', id);
-	// 	});
-	//
-	// 	this.get("cy").on('mouseover','node', function(event){
-	// 				var target = event.cyTarget;
-	// 				var id = target.data("id");
-	// 				var name = target.data("name");
-	// 				var text = target.data("tooltip") + " Pro detaily podrž pravé tlačítko."; //TODO formatovanie textu
-	//
-	// 				var x=event.cyPosition.x;
-	// 				var y=event.cyPosition.y;
-	// 				self.get("cy").$('#' + id).qtip({
-	// 						content: {
-	// 								title: name,
-	// 								text: text
-	// 						},
-	// 						show: {
-	// 								event: false,
-	// 								ready: true,
-	// 								effect:false
-	// 						},
-	// 						position: {
-	// 								my: 'bottom center',
-	// 								at: 'top center',
-	// 								target: [x+3, y+3],
-	// 								adjust: {x:7,y:7}
-	// 						},
-	// 						hide: {
-	// 								fixed: true,
-	// 								event: false,
-	// 								inactive: 1000
-	// 						},
-	// 						style: {
-	// 								classes: 'qtip-bootstrap',
-	// 								tip: {
-	// 										width: 16,
-	// 										height: 8
-	// 								}
-	// 						}
-	// 				});
-	// 		});
-	// 	}
+		});
+	}
 });

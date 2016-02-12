@@ -32,6 +32,7 @@ body {
 	bottom: 0;
 	align-items: center;
 	padding: 1rem;
+	z-index: 40;
 }
 .footer h2 {
  color: #FFFFFF;

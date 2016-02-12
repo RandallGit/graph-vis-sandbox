@@ -20,30 +20,31 @@ export default Ember.Component.extend({
 				css: {
 					'content': 'data(label)',
 					'text-valign': 'center',
-					'text-halign': 'right',
-					'text-background-color': 'white',
-					'text-background-shape': 'rectangle',
-					'text-background-opacity': '1',
+					'text-halign': 'center',
 					'font-size': '36px',
-					'width': '100px',
-					'height': '100px'
+					'width': '200px',
+					'height': '200px',
+					'background-color': '#FFFFFF',
+					'border-width': '12px',
+					'border-color': '#838787',
 				}
 			}, {
 				selector: '$node > node',
 				css: {
-					'padding-top': '10px',
-					'padding-left': '10px',
-					'padding-bottom': '10px',
-					'padding-right': '10px',
+					'padding-top': '30px',
+					'padding-left': '30px',
+					'padding-bottom': '30px',
+					'padding-right': '30px',
 					'text-valign': 'top',
 					'text-halign': 'center',
-					'background-color': '#838787'
 				}
 			}, {
 				selector: 'edge',
 				css: {
 					'target-arrow-shape': 'triangle',
-					'line-color': '#18679A',
+					// 'line-color': '#18679A',
+					'line-color': '#fff',
+					'width': '8px',
 				}
 			}, {
 				selector: ':selected',
@@ -56,7 +57,7 @@ export default Ember.Component.extend({
 			}, {
 				selector: '.connectednodes',
 					css: {
-						'background-color': 'pink',
+						'background-color': 'magenta',
 					}
 			}
 
@@ -128,7 +129,7 @@ export default Ember.Component.extend({
 
 				fit: true, // whether to fit the viewport to the graph
 				directed: false, // whether the tree is directed downwards (or edges can point in any direction if false)
-				padding: 30, // padding on fit
+				padding: 80, // padding on fit
 				circle: false, // put depths in concentric circles if true, put depths top down if false
 				spacingFactor: 1, // positive spacing factor, larger => more space between nodes (N.B. n/a if causes overlap)
 				boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }

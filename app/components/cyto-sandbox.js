@@ -26,7 +26,7 @@ export default Ember.Component.extend({
 					'height': '200px',
 					'background-color': '#FFFFFF',
 					'border-width': '12px',
-					'border-color': '#838787',
+					'border-color': '#18679A',
 				}
 			}, {
 				selector: '$node > node',

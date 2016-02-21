@@ -1,9 +1,11 @@
 import Ember from "ember";
+// import cola from 'cola';
 
 export default Ember.Component.extend({
 	// tagName: '',
-
 	cy: undefined,
+
+	layoutType: null,
 
 	didInsertElement: function() {
 		this._super();
@@ -57,7 +59,8 @@ export default Ember.Component.extend({
 			}, {
 				selector: '.connectednodes',
 					css: {
-						'background-color': 'magenta',
+						'line-color': 'magenta',
+						'border-color': 'magenta',
 					}
 			}
 
@@ -125,22 +128,22 @@ export default Ember.Component.extend({
 				// // Whether to use threading to speed up the layout
 				// useMultitasking     : true
 
-				name: 'breadthfirst',
-
-				fit: true, // whether to fit the viewport to the graph
-				directed: false, // whether the tree is directed downwards (or edges can point in any direction if false)
-				padding: 80, // padding on fit
-				circle: false, // put depths in concentric circles if true, put depths top down if false
-				spacingFactor: 1, // positive spacing factor, larger => more space between nodes (N.B. n/a if causes overlap)
-				boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
-				avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
-				roots: undefined, // the roots of the trees
-				maximalAdjustments: 0, // how many times to try to position the nodes in a maximal way (i.e. no backtracking)
-				animate: false, // whether to transition the node positions
-				animationDuration: 500, // duration of animation in ms if enabled
-				animationEasing: undefined, // easing of animation if enabled
-				ready: undefined, // callback on layoutready
-				stop: undefined // callback on layoutstop
+				// name: 'breadthfirst',
+				//
+				// fit: true, // whether to fit the viewport to the graph
+				// directed: false, // whether the tree is directed downwards (or edges can point in any direction if false)
+				// padding: 80, // padding on fit
+				// circle: false, // put depths in concentric circles if true, put depths top down if false
+				// spacingFactor: 1, // positive spacing factor, larger => more space between nodes (N.B. n/a if causes overlap)
+				// boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
+				// avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
+				// roots: undefined, // the roots of the trees
+				// maximalAdjustments: 0, // how many times to try to position the nodes in a maximal way (i.e. no backtracking)
+				// animate: false, // whether to transition the node positions
+				// animationDuration: 500, // duration of animation in ms if enabled
+				// animationEasing: undefined, // easing of animation if enabled
+				// ready: undefined, // callback on layoutready
+				// stop: undefined // callback on layoutstop
 
 				// name: 'circle',
 				//
@@ -184,40 +187,40 @@ export default Ember.Component.extend({
 				// ready: undefined, // callback on layoutready
 				// stop: undefined // callback on layoutstop
 
-				// name: 'cola',
-				// animate: true, // whether to show the layout as it's running
-				// refresh: 1, // number of ticks per frame; higher is faster but more jerky
-				// maxSimulationTime: 4000, // max length in ms to run the layout
-				// ungrabifyWhileSimulating: false, // so you can't drag nodes during layout
-				// fit: true, // on every layout reposition of nodes, fit the viewport
-				// padding: 30, // padding around the simulation
-				// boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
-				//
-				// // layout event callbacks
-				// ready: function(){}, // on layoutready
-				// stop: function(){}, // on layoutstop
-				//
-				// // positioning options
-				// randomize: false, // use random node positions at beginning of layout
-				// avoidOverlap: true, // if true, prevents overlap of node bounding boxes
-				// handleDisconnected: true, // if true, avoids disconnected components from overlapping
-				// // nodeSpacing: function( node ){ return 10; }, // extra spacing around nodes
-				// flow: undefined, // use DAG/tree flow layout if specified, e.g. { axis: 'y', minSeparation: 30 }
-				// alignment: undefined, // relative alignment constraints on nodes, e.g. function( node ){ return { x: 0, y: 1 } }
-				//
-				// // different methods of specifying edge length
-				// // each can be a constant numerical value or a function like `function( edge ){ return 2; }`
-				// edgeLength: undefined, // sets edge length directly in simulation
-				// edgeSymDiffLength: undefined, // symmetric diff edge length in simulation
-				// edgeJaccardLength: undefined, // jaccard edge length in simulation
-				//
-				// // iterations of cola algorithm; uses default values on undefined
-				// unconstrIter: undefined, // unconstrained initial layout iterations
-				// userConstIter: undefined, // initial layout iterations with user-specified constraints
-				// allConstIter: undefined, // initial layout iterations with all constraints including non-overlap
-				//
-				// // infinite layout options
-				// infinite: false // overrides all other options for a forces-all-the-time mode
+				name: 'cola',
+				animate: true, // whether to show the layout as it's running
+				refresh: 1, // number of ticks per frame; higher is faster but more jerky
+				maxSimulationTime: 4000, // max length in ms to run the layout
+				ungrabifyWhileSimulating: false, // so you can't drag nodes during layout
+				fit: true, // on every layout reposition of nodes, fit the viewport
+				padding: 30, // padding around the simulation
+				boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
+
+				// layout event callbacks
+				ready: function(){}, // on layoutready
+				stop: function(){}, // on layoutstop
+
+				// positioning options
+				randomize: false, // use random node positions at beginning of layout
+				avoidOverlap: true, // if true, prevents overlap of node bounding boxes
+				handleDisconnected: true, // if true, avoids disconnected components from overlapping
+				nodeSpacing: function( node ){ return 10; }, // extra spacing around nodes
+				// flow: { axis: 'x', minSeparation: 30 }, // use DAG/tree flow layout if specified, e.g. { axis: 'y', minSeparation: 30 }
+				alignment: undefined, // relative alignment constraints on nodes, e.g. function( node ){ return { x: 0, y: 1 } }
+
+				// different methods of specifying edge length
+				// each can be a constant numerical value or a function like `function( edge ){ return 2; }`
+				edgeLength: undefined, // sets edge length directly in simulation
+				edgeSymDiffLength: undefined, // symmetric diff edge length in simulation
+				edgeJaccardLength: undefined, // jaccard edge length in simulation
+
+				// iterations of cola algorithm; uses default values on undefined
+				unconstrIter: undefined, // unconstrained initial layout iterations
+				userConstIter: undefined, // initial layout iterations with user-specified constraints
+				allConstIter: undefined, // initial layout iterations with all constraints including non-overlap
+
+				// infinite layout options
+				infinite: false // overrides all other options for a forces-all-the-time mode
 			},
 
 			elements: {

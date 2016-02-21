@@ -19,15 +19,14 @@ module.exports = function(defaults) {
 	// please specify an object with the list of modules as keys
 	// along with the exports of each module as its value.
 	app.import("bower_components/cytoscape/dist/cytoscape.js");
-	app.import("bower_components/webcola/WebCola/cola.js");
+	app.import("bower_components/cola/WebCola/cola.js");
 	app.import("bower_components/cytoscape-cola/cytoscape-cola.js");
 
 	return app.toTree();
 
-	var cytoscape = require('cytoscape');
-	var cycola = require('cytoscape-cola');
-	var cola = require('webcola');
-
-	cycola( cytoscape, cola ); // register extension
-
+	// var cytoscape = require('cytoscape');
+	// var cycola = require('cytoscape-cola');
+	// var cola = require('webcola');
+	//
+	// cycola( cytoscape, cola ); // register extension
 };

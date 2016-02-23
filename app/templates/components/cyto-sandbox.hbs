@@ -1,1 +1,6 @@
 <div id="cy"></div>
+<select onchange={{action (mut vehicleIndex) value="target.value"}}>
+	{{#each vehicles as |vehicleChoice index|}}
+		<option value={{ index }} selected={{is-eq vehicleIndex index}}>{{vehicleChoice.name}}</option>
+	{{/each}}
+</select>

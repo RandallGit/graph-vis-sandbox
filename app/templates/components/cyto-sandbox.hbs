@@ -1,6 +1,8 @@
-<div id="cy"></div>
-<select onchange={{action (mut vehicleIndex) value="target.value"}}>
-	{{#each vehicles as |vehicleChoice index|}}
-		<option value={{ index }} selected={{is-eq vehicleIndex index}}>{{vehicleChoice.name}}</option>
+<header class="header">
+<select onchange={{action (mut layoutTypeIndex) value="target.value"}}>
+	{{#each layoutType as |layoutChoice index|}}
+		<option value={{ index }} selected={{eq layoutTypeIndex index}}>{{layoutChoice.name}}</option>
 	{{/each}}
 </select>
+</header>
+<div id="cy"></div>

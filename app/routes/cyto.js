@@ -1,70 +1,8 @@
 import Ember from 'ember';
 
-// var nodes = [{
-// 	id: 1,
-// 	title: 'Grand Old Mansion',
-// 	intro: 'Veruca Salt',
-// 	city: 'San Francisco',
-// 	type: 'Estate',
-// 	bedrooms: 15,
-// 	image: 'https://upload.wikimedia.org/wikipedia/commons/c/cb/Crane_estate_(5).jpg'
-// }, {
-// 	id: 2,
-// 	title: 'Urban Living',
-// 	intro: 'Mike TV',
-// 	city: 'Seattle',
-// 	type: 'Condo',
-// 	bedrooms: 1,
-// 	image: 'https://upload.wikimedia.org/wikipedia/commons/0/0e/Alfonso_13_Highrise_Tegucigalpa.jpg'
-// }, {
-// 	id: 3,
-// 	title: 'Downtown Charm',
-// 	intro: 'Violet Beauregarde',
-// 	city: 'Portland',
-// 	type: 'Apartment',
-// 	bedrooms: 3,
-// 	image: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Wheeldon_Apartment_Building_-_Portland_Oregon.jpg'
-// }];
-// var layoutType = [{
-// 	id: 1,
-// 	name: 'cola',
-// 	animate: true, // whether to show the layout as it's running
-// 	refresh: 1, // number of ticks per frame; higher is faster but more jerky
-// 	maxSimulationTime: 4000, // max length in ms to run the layout
-// 	ungrabifyWhileSimulating: false, // so you can't drag nodes during layout
-// 	fit: true, // on every layout reposition of nodes, fit the viewport
-// 	padding: 30, // padding around the simulation
-// 	boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
-//
-// 	// layout event callbacks
-// 	ready: function(){}, // on layoutready
-// 	stop: function(){}, // on layoutstop
-//
-// 	// positioning options
-// 	randomize: false, // use random node positions at beginning of layout
-// 	avoidOverlap: true, // if true, prevents overlap of node bounding boxes
-// 	handleDisconnected: true, // if true, avoids disconnected components from overlapping
-// 	// nodeSpacing: function( node ){ return 10; }, // extra spacing around nodes
-// 	flow: { axis: 'x', minSeparation: 10 }, // use DAG/tree flow layout if specified, e.g. { axis: 'y', minSeparation: 30 }
-// 	alignment: undefined, // relative alignment constraints on nodes, e.g. function( node ){ return { x: 0, y: 1 } }
-// 	// different methods of specifying edge length
-// 	// each can be a constant numerical value or a function like `function( edge ){ return 2; }`
-// 	edgeLength: undefined, // sets edge length directly in simulation
-// 	edgeSymDiffLength: undefined, // symmetric diff edge length in simulation
-// 	edgeJaccardLength: undefined, // jaccard edge length in simulation
-//
-// 	// iterations of cola algorithm; uses default values on undefined
-// 	unconstrIter: undefined, // unconstrained initial layout iterations
-// 	userConstIter: undefined, // initial layout iterations with user-specified constraints
-// 	allConstIter: undefined, // initial layout iterations with all constraints including non-overlap
-//
-// 	// infinite layout options
-// 	infinite: false // overrides all other options for a forces-all-the-time mode
-// }];
-
 export default Ember.Route.extend({
 	model(){
-		let layoutType = [
+		return [
 			{
 				id: 1,
 				name: 'cola',
@@ -81,11 +19,11 @@ export default Ember.Route.extend({
 				stop: function(){}, // on layoutstop
 
 				// positioning options
-				randomize: false, // use random node positions at beginning of layout
+				randomize: true, // use random node positions at beginning of layout
 				avoidOverlap: true, // if true, prevents overlap of node bounding boxes
 				handleDisconnected: true, // if true, avoids disconnected components from overlapping
-				nodeSpacing: function( node ){ return 10; }, // extra spacing around nodes
-				flow: { axis: 'x', minSeparation: 10 }, // use DAG/tree flow layout if specified, e.g. { axis: 'y', minSeparation: 30 }
+				nodeSpacing: function( node ){ return 30; }, // extra spacing around nodes
+				// flow: { axis: 'x', minSeparation: 10 }, // use DAG/tree flow layout if specified, e.g. { axis: 'y', minSeparation: 30 }
 				alignment: undefined, // relative alignment constraints on nodes, e.g. function( node ){ return { x: 0, y: 1 } }
 				// different methods of specifying edge length
 				// each can be a constant numerical value or a function like `function( edge ){ return 2; }`
@@ -114,7 +52,7 @@ export default Ember.Route.extend({
 				cols: undefined, // force num of columns in the grid
 				position: function( node ){}, // returns { row, col } for element
 				sort: undefined, // a sorting function to order the nodes; e.g. function(a, b){ return a.data('weight') - b.data('weight') }
-				animate: false, // whether to transition the node positions
+				animate: true, // whether to transition the node positions
 				animationDuration: 500, // duration of animation in ms if enabled
 				animationEasing: undefined, // easing of animation if enabled
 				ready: undefined, // callback on layoutready
@@ -178,7 +116,7 @@ export default Ember.Route.extend({
 				avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
 				roots: undefined, // the roots of the trees
 				maximalAdjustments: 0, // how many times to try to position the nodes in a maximal way (i.e. no backtracking)
-				animate: false, // whether to transition the node positions
+				animate: true, // whether to transition the node positions
 				animationDuration: 500, // duration of animation in ms if enabled
 				animationEasing: undefined, // easing of animation if enabled
 				ready: undefined, // callback on layoutready
@@ -197,7 +135,7 @@ export default Ember.Route.extend({
 				sweep: undefined, // how many radians should be between the first and last node (defaults to full circle)
 				clockwise: true, // whether the layout should go clockwise (true) or counterclockwise/anticlockwise (false)
 				sort: undefined, // a sorting function to order the nodes; e.g. function(a, b){ return a.data('weight') - b.data('weight') }
-				animate: false, // whether to transition the node positions
+				animate: true, // whether to transition the node positions
 				animationDuration: 500, // duration of animation in ms if enabled
 				animationEasing: undefined, // easing of animation if enabled
 				ready: undefined, // callback on layoutready
@@ -224,7 +162,7 @@ export default Ember.Route.extend({
 				levelWidth: function(nodes) { // the variation of concentric values in each level
 					return nodes.maxDegree() / 4;
 				},
-				animate: false, // whether to transition the node positions
+				animate: true, // whether to transition the node positions
 				animationDuration: 500, // duration of animation in ms if enabled
 				animationEasing: undefined, // easing of animation if enabled
 				ready: undefined, // callback on layoutready
@@ -232,6 +170,8 @@ export default Ember.Route.extend({
 			}
 
 		];
-		return layoutType;
+		// var getLayouts = Ember.$.getJSON("/layouts.json");
+		// // var getEvents = $.getJSON("events.json");
+		// return Ember.RSVP.all([getLayouts]);
 	}
 });

@@ -1,34 +1,33 @@
 import Ember from "ember";
-// import cola from 'cola';
 
 export default Ember.Component.extend({
 	// tagName: '',
 	cy: undefined,
-	// layoutTypeIndex: 3,
-	vehicleIndex: 0,
+	layoutTypeIndex: 0,
 
-	vehicle: Ember.computed('vehicleIndex', function() {
-		return this.get('vehicles')[this.get('vehicleIndex')];
+	layout: Ember.computed('layoutTypeIndex', function() {
+		return this.get('layoutType')[this.get('layoutTypeIndex')];
+	}),
+	layoutChanged: Ember.observer('layout', function() {
+		this.load_graph();
 	}),
 
-	vehicles: [
-		{name: 'Ford', year: 1953},
-		{name: 'Chevy', year: 1952}
-	],
-	
+	load_graph: function()  {
+		var layout = this.get('layout');
+		this.get("cy").layout(layout).forceRender();
+	},
+
 	didInsertElement: function() {
 		this._super();
-		var layoutTypeIndex = this.get('vehicleIndex');
-		console.log(layoutTypeIndex);
-		var myLayoutType = this.get('layoutType')[layoutTypeIndex];
-		console.log(myLayoutType);
+		var layout = this.get('layout');
 
 		var cy = cytoscape({
 			container: document.getElementById('cy'),
-
 			boxSelectionEnabled: false,
 			autounselectify: true,
 			hideLabelsOnViewport: true,
+
+			layout: this.get('layoutType')[this.get('layoutTypeIndex')],
 
 			style: [{
 				selector: 'node',
@@ -78,8 +77,6 @@ export default Ember.Component.extend({
 			}
 
 		],
-
-			layout: myLayoutType,
 
 			elements: {
 				nodes: [
@@ -1198,5 +1195,6 @@ export default Ember.Component.extend({
 			var directlyConnected = node.neighborhood();
 			directlyConnected.nodes().addClass('connectednodes');
 		});
+		this.set('cy', cy);
 	},
 });

@@ -3,11 +3,12 @@ import Ember from "ember";
 export default Ember.Component.extend({
 	// tagName: '',
 	cy: undefined,
-	layoutTypeIndex: 0,
-
+	layoutTypeIndex: 2,
 	layout: Ember.computed('layoutTypeIndex', function() {
+		console.log(this.get('layoutType'));
 		return this.get('layoutType')[this.get('layoutTypeIndex')];
 	}),
+
 	layoutChanged: Ember.observer('layout', function() {
 		this.load_graph();
 	}),
@@ -74,6 +75,12 @@ export default Ember.Component.extend({
 						'line-color': 'magenta',
 						'border-color': 'magenta',
 					}
+			}, {
+				selector: 'node[[degree >= 4]]',
+				css: {
+					'height': '300px',
+					'width': '300px',
+				}
 			}
 
 		],

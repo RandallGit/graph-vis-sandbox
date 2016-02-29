@@ -170,8 +170,15 @@ export default Ember.Route.extend({
 			}
 
 		];
-		// var getLayouts = Ember.$.getJSON("/layouts.json");
-		// // var getEvents = $.getJSON("events.json");
-		// return Ember.RSVP.all([getLayouts]);
+		// var getLayouts = Ember.$.getJSON("layouts.json");
+		// var getLesMis = Ember.$.getJSON("les_miserables.json");
+		// return Ember.RSVP.all([getLayouts, getLesMis]);
+		// return Ember.RSVP.hash({ layoutType: getLayouts, graphData: getLesMis });
 	}
+	// ,
+
+	// setupController: function(controller, models) {
+	// 	controller.set('layoutType', models[0]);
+	// 	controller.set('graphData', models[1]);
+	// }
 });

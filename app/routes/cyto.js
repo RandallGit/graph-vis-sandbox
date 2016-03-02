@@ -6,6 +6,7 @@ export default Ember.Route.extend({
 			{
 				id: 1,
 				name: 'cola',
+				description: 'The cola layout uses a force-directed physics simulation with several sophisticated constraints, written by Tim Dwyer. Cola is much more stable in interactive applications (no "jitter"), allows user specified constraints such as alignments and grouping, can automatically generate constraints to avoid overlapping nodes  or provide flow layout for directed graphs. It supports noncompound and compound graphs well using constraint-based optimization techniques.',
 				animate: true, // whether to show the layout as it's running
 				refresh: 1, // number of ticks per frame; higher is faster but more jerky
 				maxSimulationTime: 4000, // max length in ms to run the layout
@@ -42,6 +43,7 @@ export default Ember.Route.extend({
 			{
 				id: 2,
 				name: 'grid',
+				description: 'The grid layout puts nodes in a well-spaced grid.',
 				fit: true, // whether to fit the viewport to the graph
 				padding: 30, // padding used on fit
 				boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
@@ -61,6 +63,7 @@ export default Ember.Route.extend({
 			{
 				id: 3,
 				name: 'cose',
+				description: 'The cose (Compound Spring Embedder) layout uses a force-directed simulation to lay out graphs. It works well with noncompound graphs and it has additional logic to support compound graphs well.',
 				ready               : function() {},
 				// Called on `layoutstop`
 				stop                : function() {},
@@ -106,7 +109,7 @@ export default Ember.Route.extend({
 			{
 				id: 4,
 				name: 'breadthfirst',
-
+				description: 'The breadthfirst layout puts nodes in a hierarchy, based on a breadthfirst traversal of the graph.',
 				fit: true, // whether to fit the viewport to the graph
 				directed: false, // whether the tree is directed downwards (or edges can point in any direction if false)
 				padding: 80, // padding on fit
@@ -125,7 +128,7 @@ export default Ember.Route.extend({
 			{
 				id: 5,
 				name: 'circle',
-
+				description: 'The circle layout puts nodes in a circle.',
 				fit: true, // whether to fit the viewport to the graph
 				padding: 30, // the padding on fit
 				boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
@@ -144,7 +147,7 @@ export default Ember.Route.extend({
 			{
 				id: 6,
 				name: 'concentric',
-
+				description: 'The concentric layout positions nodes in concentric circles, based on a metric that you specify to segregate the nodes into levels. This layout sets the concentric value in ele.scratch().',
 				fit: true, // whether to fit the viewport to the graph
 				padding: 30, // the padding on fit
 				startAngle: 3 / 2 * Math.PI, // where nodes start in radians

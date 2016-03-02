@@ -1,9 +1,10 @@
 import Ember from "ember";
 
 export default Ember.Component.extend({
-	// tagName: '',
+	tagName: '',
 	cy: undefined,
 	layoutTypeIndex: 2,
+
 	layout: Ember.computed('layoutTypeIndex', function() {
 		console.log(this.get('layoutType'));
 		return this.get('layoutType')[this.get('layoutTypeIndex')];
@@ -20,10 +21,11 @@ export default Ember.Component.extend({
 
 	didInsertElement: function() {
 		this._super();
-		var layout = this.get('layout');
+		// var layout = this.get('layout');
 
 		var cy = cytoscape({
 			container: document.getElementById('cy'),
+			// container: this.get('elementId'),
 			boxSelectionEnabled: false,
 			autounselectify: true,
 			hideLabelsOnViewport: true,
@@ -57,9 +59,9 @@ export default Ember.Component.extend({
 				selector: 'edge',
 				css: {
 					'target-arrow-shape': 'triangle',
-					// 'line-color': '#18679A',
 					'line-color': '#fff',
 					'width': '8px',
+					'label': 'data(source)',
 				}
 			}, {
 				selector: ':selected',

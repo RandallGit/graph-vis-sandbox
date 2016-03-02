@@ -44,6 +44,9 @@ export default Ember.Component.extend({
 					'background-color': '#FFFFFF',
 					'border-width': '12px',
 					'border-color': '#18679A',
+					'transition-property': 'border-color, border-width',
+					'transition-duration': '750ms',
+
 				}
 			}, {
 				selector: '$node > node',
@@ -61,7 +64,11 @@ export default Ember.Component.extend({
 					'target-arrow-shape': 'triangle',
 					'line-color': '#fff',
 					'width': '8px',
-					'label': 'data(source)',
+					'label': 'data(target)',
+					'text-background-color': 'white',
+					'text-background-opacity': '1',
+					'text-background-shape': 'roundrectangle',
+					'curve-style': 'bezier',
 				}
 			}, {
 				selector: ':selected',
@@ -74,8 +81,13 @@ export default Ember.Component.extend({
 			}, {
 				selector: '.connectednodes',
 					css: {
-						'line-color': 'magenta',
-						'border-color': 'magenta',
+						'border-color': '#77EBB9',
+					}
+			}, {
+				selector: '.parentnode',
+					css: {
+						'border-color': '#2FC585',
+						'border-width': '18px',
 					}
 			}, {
 				selector: 'node[[degree >= 4]]',
@@ -1199,11 +1211,14 @@ export default Ember.Component.extend({
 				}, ]
 			},
 		});
+		// Tapping on a node will select and highlight it's neighbors
 		cy.on('tap', 'node', function(e) {
 			var node = e.cyTarget;
 			var directlyConnected = node.neighborhood();
 			directlyConnected.nodes().addClass('connectednodes');
+			node.addClass('parentnode');
 		});
+
 		this.set('cy', cy);
 	},
 });

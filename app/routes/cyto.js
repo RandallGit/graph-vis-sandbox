@@ -6,7 +6,8 @@ export default Ember.Route.extend({
 			{
 				id: 1,
 				name: 'cola',
-				description: 'The cola layout uses a force-directed physics simulation with several sophisticated constraints, written by Tim Dwyer. Cola is much more stable in interactive applications (no "jitter"), allows user specified constraints such as alignments and grouping, can automatically generate constraints to avoid overlapping nodes  or provide flow layout for directed graphs. It supports noncompound and compound graphs well using constraint-based optimization techniques.',
+				description: 'Cola is much more stable in interactive applications (no "jitter"), allows user specified constraints such as alignments and grouping, can automatically generate constraints to avoid overlapping nodes or provide flow layout for directed graphs. It supports noncompound and compound graphs well using constraint-based optimization techniques.',
+				value: 'For this social network data it identifies two social communities that are not apparent using other layouts.',
 				animate: true, // whether to show the layout as it's running
 				refresh: 1, // number of ticks per frame; higher is faster but more jerky
 				maxSimulationTime: 4000, // max length in ms to run the layout
@@ -23,8 +24,8 @@ export default Ember.Route.extend({
 				randomize: true, // use random node positions at beginning of layout
 				avoidOverlap: true, // if true, prevents overlap of node bounding boxes
 				handleDisconnected: true, // if true, avoids disconnected components from overlapping
-				nodeSpacing: function( node ){ return 30; }, // extra spacing around nodes
-				// flow: { axis: 'x', minSeparation: 10 }, // use DAG/tree flow layout if specified, e.g. { axis: 'y', minSeparation: 30 }
+				nodeSpacing: function( node ){ return 10; }, // extra spacing around nodes
+				flow: { axis: 'y', minSeparation: 5 }, // use DAG/tree flow layout if specified, e.g. { axis: 'y', minSeparation: 30 }
 				alignment: undefined, // relative alignment constraints on nodes, e.g. function( node ){ return { x: 0, y: 1 } }
 				// different methods of specifying edge length
 				// each can be a constant numerical value or a function like `function( edge ){ return 2; }`
@@ -33,9 +34,9 @@ export default Ember.Route.extend({
 				edgeJaccardLength: undefined, // jaccard edge length in simulation
 
 				// iterations of cola algorithm; uses default values on undefined
-				unconstrIter: undefined, // unconstrained initial layout iterations
-				userConstIter: undefined, // initial layout iterations with user-specified constraints
-				allConstIter: undefined, // initial layout iterations with all constraints including non-overlap
+				unconstrIter: 18, // unconstrained initial layout iterations
+				userConstIter: 18, // initial layout iterations with user-specified constraints
+				allConstIter: 32, // initial layout iterations with all constraints including non-overlap
 
 				// infinite layout options
 				infinite: false // overrides all other options for a forces-all-the-time mode
@@ -44,6 +45,7 @@ export default Ember.Route.extend({
 				id: 2,
 				name: 'grid',
 				description: 'The grid layout puts nodes in a well-spaced grid.',
+				value: ' This provides almost no value looking at an undirected social network.',
 				fit: true, // whether to fit the viewport to the graph
 				padding: 30, // padding used on fit
 				boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
@@ -56,7 +58,7 @@ export default Ember.Route.extend({
 				sort: undefined, // a sorting function to order the nodes; e.g. function(a, b){ return a.data('weight') - b.data('weight') }
 				animate: true, // whether to transition the node positions
 				animationDuration: 500, // duration of animation in ms if enabled
-				animationEasing: undefined, // easing of animation if enabled
+				animationEasing: 'ease-in', // easing of animation if enabled
 				ready: undefined, // callback on layoutready
 				stop: undefined // callback on layoutstop
 			},
@@ -64,6 +66,7 @@ export default Ember.Route.extend({
 				id: 3,
 				name: 'cose',
 				description: 'The cose (Compound Spring Embedder) layout uses a force-directed simulation to lay out graphs. It works well with noncompound graphs and it has additional logic to support compound graphs well.',
+				value: ' Like most force-directed layouts, this provides no value when visualizing social networks and most data.',
 				ready               : function() {},
 				// Called on `layoutstop`
 				stop                : function() {},
@@ -110,9 +113,10 @@ export default Ember.Route.extend({
 				id: 4,
 				name: 'breadthfirst',
 				description: 'The breadthfirst layout puts nodes in a hierarchy, based on a breadthfirst traversal of the graph.',
+				value: 'For a data set, that is undirected, of a social network this does the best job of visualizing the relationships and identifying patterns.',
 				fit: true, // whether to fit the viewport to the graph
 				directed: false, // whether the tree is directed downwards (or edges can point in any direction if false)
-				padding: 80, // padding on fit
+				padding: 30, // padding on fit
 				circle: false, // put depths in concentric circles if true, put depths top down if false
 				spacingFactor: 1, // positive spacing factor, larger => more space between nodes (N.B. n/a if causes overlap)
 				boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
@@ -121,7 +125,7 @@ export default Ember.Route.extend({
 				maximalAdjustments: 0, // how many times to try to position the nodes in a maximal way (i.e. no backtracking)
 				animate: true, // whether to transition the node positions
 				animationDuration: 500, // duration of animation in ms if enabled
-				animationEasing: undefined, // easing of animation if enabled
+				animationEasing: 'ease-in', // easing of animation if enabled
 				ready: undefined, // callback on layoutready
 				stop: undefined // callback on layoutstop
 			},
@@ -129,6 +133,7 @@ export default Ember.Route.extend({
 				id: 5,
 				name: 'circle',
 				description: 'The circle layout puts nodes in a circle.',
+				value: 'Without assigning edge weights, bezier curves or some other visual weighting it provides no value when visualizing social networks.',
 				fit: true, // whether to fit the viewport to the graph
 				padding: 30, // the padding on fit
 				boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
@@ -140,7 +145,7 @@ export default Ember.Route.extend({
 				sort: undefined, // a sorting function to order the nodes; e.g. function(a, b){ return a.data('weight') - b.data('weight') }
 				animate: true, // whether to transition the node positions
 				animationDuration: 500, // duration of animation in ms if enabled
-				animationEasing: undefined, // easing of animation if enabled
+				animationEasing: 'ease-in', // easing of animation if enabled
 				ready: undefined, // callback on layoutready
 				stop: undefined // callback on layoutstop
 			},
@@ -148,6 +153,7 @@ export default Ember.Route.extend({
 				id: 6,
 				name: 'concentric',
 				description: 'The concentric layout positions nodes in concentric circles, based on a metric that you specify to segregate the nodes into levels. This layout sets the concentric value in ele.scratch().',
+				value: 'This quickly illustrates the circles of influence within a social network.',
 				fit: true, // whether to fit the viewport to the graph
 				padding: 30, // the padding on fit
 				startAngle: 3 / 2 * Math.PI, // where nodes start in radians
@@ -167,7 +173,7 @@ export default Ember.Route.extend({
 				},
 				animate: true, // whether to transition the node positions
 				animationDuration: 500, // duration of animation in ms if enabled
-				animationEasing: undefined, // easing of animation if enabled
+				animationEasing: 'ease-in', // easing of animation if enabled
 				ready: undefined, // callback on layoutready
 				stop: undefined // callback on layoutstop
 			}

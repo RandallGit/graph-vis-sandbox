@@ -4,6 +4,7 @@ export default Ember.Component.extend({
 	tagName: '',
 	cy: undefined,
 	layoutTypeIndex: 2,
+	testPropertyLayoutValue: true,
 
 	layout: Ember.computed('layoutTypeIndex', function() {
 		console.log(this.get('layoutType'));
@@ -21,7 +22,6 @@ export default Ember.Component.extend({
 
 	didInsertElement: function() {
 		this._super();
-		// var layout = this.get('layout');
 
 		var cy = cytoscape({
 			container: document.getElementById('cy'),
@@ -38,15 +38,12 @@ export default Ember.Component.extend({
 					'content': 'data(label)',
 					'text-valign': 'center',
 					'text-halign': 'center',
-					'font-size': '36px',
-					'width': '200px',
-					'height': '200px',
+					'font-size': '54px',
 					'background-color': '#FFFFFF',
 					'border-width': '12px',
 					'border-color': '#18679A',
-					'transition-property': 'border-color, border-width',
+					'transition-property': 'background-color',
 					'transition-duration': '750ms',
-
 				}
 			}, {
 				selector: '$node > node',
@@ -62,13 +59,9 @@ export default Ember.Component.extend({
 				selector: 'edge',
 				css: {
 					'target-arrow-shape': 'triangle',
+					'<pos>-arrow-color': '#fff',
 					'line-color': '#fff',
-					'width': '8px',
-					'label': 'data(target)',
-					'text-background-color': 'white',
-					'text-background-opacity': '1',
-					'text-background-shape': 'roundrectangle',
-					'curve-style': 'bezier',
+					'width': '12px',
 				}
 			}, {
 				selector: ':selected',
@@ -81,21 +74,32 @@ export default Ember.Component.extend({
 			}, {
 				selector: '.connectednodes',
 					css: {
-						'border-color': '#77EBB9',
+						'background-color': '#f9a15c',
 					}
 			}, {
 				selector: '.parentnode',
 					css: {
-						'border-color': '#2FC585',
-						'border-width': '18px',
+						'background-color': '#FF7F00',
 					}
 			}, {
-				selector: 'node[[degree >= 4]]',
+				selector: 'node[[degree >= 6]]',
 				css: {
-					'height': '300px',
-					'width': '300px',
+					'height': '600px',
+					'width': '600px',
 				}
-			}
+			}, {
+				selector: 'node[[degree >= 2]][[degree <= 5]]',
+				css: {
+					'height': '400px',
+					'width': '400px',
+				}
+			}, {
+				selector: 'node[[degree <= 1]]',
+				css: {
+					'height': '200px',
+					'width': '200px',
+				}
+			},
 
 		],
 

@@ -8,7 +8,7 @@
 </header>
 <section>
 	<span>
-		Select Layout Type:
+		Layout Type:
 	<select onchange={{action (mut layoutTypeIndex) value="target.value"}}>
 		{{#each layoutType as |layoutChoice index|}}
 			<option value={{ index }} selected={{eq layoutTypeIndex index}}>{{layoutChoice.name}}</option>

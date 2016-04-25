@@ -31,18 +31,12 @@ module.exports = function(defaults) {
 	// please specify an object with the list of modules as keys
 	// along with the exports of each module as its value.
 	app.import("bower_components/cytoscape/dist/cytoscape.js");
-	// app.import("bower_components/graphlib/dist/graphlib.core.js");
-	// app.import("bower_components/lodash/lodash.js");
-	// app.import("bower_components/dagre/dist/dagre.core.js");
-	app.import("bower_components/cytoscape-dagre/cytoscape-dagre.js");
 	app.import("bower_components/cola/WebCola/cola.js");
 	app.import("bower_components/cytoscape-cola/cytoscape-cola.js");
+	app.import("bower_components/lodash/lodash.min.js");
+	app.import("bower_components/graphlib/dist/graphlib.core.min.js");
+	app.import("bower_components/dagre/dist/dagre.core.js");
+	app.import("bower_components/cytoscape-dagre/cytoscape-dagre.js");
 
 	return app.toTree();
-
-	// var cytoscape = require('cytoscape');
-	// var cycola = require('cytoscape-cola');
-	// var cola = require('webcola');
-	//
-	// cycola( cytoscape, cola ); // register extension
 };

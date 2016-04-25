@@ -180,13 +180,13 @@ export default Ember.Route.extend({
 			{
 				id: 7,
 				name: 'dagre',
-				description: 'dagre',
-				value: 'dagre',
+				description: 'A JavaScript library that makes it easy to lay out directed graphs on the client-side. It renders small directed graphs very efficiently and provides many controls for sophisticated acyclic graphs that include compound trees.',
+				value: 'If your network is directed Dagre can provide some valuable presentations of the data. Notice how we can see that many of the dolphins are at the top now as they are directing more contact than the others.',
 				// dagre algo options, uses default value on undefined
 				nodeSep: undefined, // the separation between adjacent nodes in the same rank
 				edgeSep: undefined, // the separation between adjacent edges in the same rank
 				rankSep: undefined, // the separation between adjacent nodes in the same rank
-				rankDir: undefined, // 'TB' for top to bottom flow, 'LR' for left to right
+				rankDir: 'LR', // 'TB' for top to bottom flow, 'LR' for left to right
 				minLen: function( edge ){ return 1; }, // number of ranks to keep between the source and target of the edge
 				edgeWeight: function( edge ){ return 1; }, // higher weight edges are generally made shorter and straighter than lower weight edges
 

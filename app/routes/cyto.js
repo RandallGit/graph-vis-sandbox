@@ -66,7 +66,7 @@ export default Ember.Route.extend({
 				id: 3,
 				name: 'cose',
 				description: 'The cose (Compound Spring Embedder) layout uses a force-directed simulation to lay out graphs. It works well with noncompound graphs and it has additional logic to support compound graphs well.',
-				value: ' Like most force-directed layouts, this provides no value when visualizing social networks and most data.',
+				value: 'Like most force-directed layouts, this provides little value when visualizing social networks and other data.',
 				ready               : function() {},
 				// Called on `layoutstop`
 				stop                : function() {},
@@ -181,7 +181,7 @@ export default Ember.Route.extend({
 				id: 7,
 				name: 'dagre',
 				description: 'A JavaScript library that makes it easy to lay out directed graphs on the client-side. It renders small directed graphs very efficiently and provides many controls for sophisticated acyclic graphs that include compound trees.',
-				value: 'If your network is directed Dagre can provide some valuable presentations of the data. Notice how we can see that many of the dolphins are at the top now as they are directing more contact than the others.',
+				value: 'If your network is directed, Dagre can provide some added value to the presentation of the data.',
 				// dagre algo options, uses default value on undefined
 				nodeSep: undefined, // the separation between adjacent nodes in the same rank
 				edgeSep: undefined, // the separation between adjacent edges in the same rank

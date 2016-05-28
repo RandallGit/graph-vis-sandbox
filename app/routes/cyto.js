@@ -7,7 +7,7 @@ export default Ember.Route.extend({
 				id: 1,
 				name: 'cola',
 				description: 'Cola is much more stable in interactive applications (no "jitter"), allows user specified constraints such as alignments and grouping, can automatically generate constraints to avoid overlapping nodes or provide flow layout for directed graphs. It supports noncompound and compound graphs well using constraint-based optimization techniques.',
-				value: 'For this social network data it identifies two social communities that are not apparent using other layouts.',
+				value: 'For this social network data it helps identify sub-communities that are not readily apparent when rendered with other layout techniques.',
 				animate: true, // whether to show the layout as it's running
 				refresh: 1, // number of ticks per frame; higher is faster but more jerky
 				maxSimulationTime: 4000, // max length in ms to run the layout

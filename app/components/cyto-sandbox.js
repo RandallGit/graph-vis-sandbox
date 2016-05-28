@@ -7,7 +7,6 @@ export default Ember.Component.extend({
 	testPropertyLayoutValue: true,
 
 	layout: Ember.computed('layoutTypeIndex', function() {
-		console.log(this.get('layoutType'));
 		return this.get('layoutType')[this.get('layoutTypeIndex')];
 	}),
 
@@ -25,7 +24,6 @@ export default Ember.Component.extend({
 
 		var cy = cytoscape({
 			container: document.getElementById('cy'),
-			// container: this.get('elementId'),
 			boxSelectionEnabled: false,
 			autounselectify: true,
 			hideLabelsOnViewport: true,

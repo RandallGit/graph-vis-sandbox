@@ -1,9 +1,10 @@
-# Ember-cyto-cola
+# Graph Viz Sandbox
 
-This README outlines the details of collaborating on this Ember application.
 This app is a graph data visualization sandbox that one can stand up by following the instructions below. It combines [Ember JS](http://emberjs.com/) and [Cytoscape JS](http://js.cytoscape.org/) as two widely used frameworks that are well documented. It also adds a sophisticated graph visualization algorithm called Cola. [Cola](http://marvl.infotech.monash.edu/webcola/) can be used to replicate human graph layout patterns and techniques. It uses a series of constraint-based optimization techniques.
 
 To view an example route navigate to http://localhost:4200/cyto after following the instructions below.
+
+Cue under construction animated GIF.
 
 ## Prerequisites
 

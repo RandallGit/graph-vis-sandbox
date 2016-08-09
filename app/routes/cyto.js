@@ -85,11 +85,11 @@ export default Ember.Route.extend({
 				// Constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
 				boundingBox         : undefined,
 				// Extra spacing between components in non-compound graphs
-				componentSpacing    : 100,
+				componentSpacing    : 500,
 				// Node repulsion (non overlapping) multiplier
 				nodeRepulsion       : function( node ){ return 400000; },
 				// Node repulsion (overlapping) multiplier
-				nodeOverlap         : 10,
+				nodeOverlap         : 20,
 				// Ideal edge (non nested) length
 				idealEdgeLength     : function( edge ){ return 10; },
 				// Divisor to compute edge forces

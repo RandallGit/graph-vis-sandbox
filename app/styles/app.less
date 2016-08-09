@@ -11,7 +11,7 @@ nav {
 	z-index: 20;
 	width: auto;
 	height: auto;
-	background-color: rgba(30,87,153, 0.5);
+	// background-color: rgba(30,87,153, 0.5);
 
 	a {
 		display: inline-block;
@@ -21,7 +21,7 @@ nav {
 		text-transform: uppercase;
 		text-decoration: none;
 		color: rgba(30,87,153, 1);
-		border-right: solid 1px rgba(30,87,153, 1);
+		background-color: rgba(30,87,153, 0.5);
 
 		&.active {
 			color: #AAD4F5;
@@ -39,14 +39,14 @@ article {
 	align-content: space-around;
 	align-items: stretch;
 	min-height: 100vh;
-	background-color: #EBD0B9;
+	// background-color: #EBD0B9;
 
 	header {
 		flex-basis: 100%;
 		flex-grow: 3;
 		margin: auto;
 		padding: 1.375rem;
-		background-color: #7DB9E8;
+		// background-color: #7DB9E8;
 	}
 
 	h1 {
@@ -75,8 +75,16 @@ aside {
 	z-index: 10;
 	height: 100%;
 	width: 24%;
-
 	background-color: white;
+
+	nav {
+		position: relative;
+
+		a {
+
+
+		}
+	}
 	header {
 		padding: 0 2rem;
 

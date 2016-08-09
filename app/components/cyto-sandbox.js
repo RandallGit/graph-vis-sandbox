@@ -42,6 +42,7 @@ export default Ember.Component.extend({
 					'border-color': '#18679A',
 					'transition-property': 'background-color',
 					'transition-duration': '750ms',
+					'cursor': 'pointer',
 				}
 			}, {
 				selector: '$node > node',
@@ -1212,6 +1213,12 @@ export default Ember.Component.extend({
 					}
 				}, ]
 			},
+		});
+		cy.on('mouseover', 'node', function () {
+			Ember.$('html,body').css('cursor', 'pointer');
+		});
+		cy.on('mouseout', 'node', function () {
+			Ember.$('html,body').css('cursor', 'default');
 		});
 		// Tapping on a node will select and highlight it's neighbors
 		cy.on('tap', 'node', function(e) {
